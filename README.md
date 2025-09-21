@@ -39,12 +39,45 @@ A comprehensive interactive chatbot dashboard for exploring oceanographic data f
    pip install -r requirements.txt
    ```
 
-3. **Run the dashboard**
+3. **Set up Groq API Key (Required for AI-powered chatbot)**
+   
+   The chatbot feature requires a Groq API key for natural language processing. You have two options:
+   
+   **Option A: Environment Variable (Recommended)**
+   ```bash
+   # Windows (Command Prompt)
+   set GROQ_API_KEY=your_actual_groq_api_key_here
+   
+   # Windows (PowerShell)
+   $env:GROQ_API_KEY="your_actual_groq_api_key_here"
+   
+   # Linux/Mac
+   export GROQ_API_KEY=your_actual_groq_api_key_here
+   ```
+   
+   **Option B: Streamlit Secrets File**
+   
+   Create a `.streamlit/secrets.toml` file in your project directory:
+   ```toml
+   [default]
+   GROQ_API_KEY = "your_actual_groq_api_key_here"
+   ```
+   
+   **Getting a Groq API Key:**
+   1. Visit [https://console.groq.com/](https://console.groq.com/)
+   2. Sign up for a free account
+   3. Navigate to API Keys section
+   4. Create a new API key
+   5. Copy the key and use it in one of the methods above
+   
+   **Note:** Without the API key, the chatbot functionality will be limited, but basic data visualization will still work.
+
+4. **Run the dashboard**
    ```bash
    streamlit run ocean_data_dashboard.py
    ```
 
-4. **Access the dashboard**
+5. **Access the dashboard**
    - Open your web browser
    - Navigate to `http://localhost:8501`
    - The dashboard will load automatically
@@ -143,9 +176,16 @@ The chatbot automatically extracts:
 - Try refreshing the page
 - Check if folium and streamlit-folium are properly installed
 
+**Chatbot Not Working**
+- Verify your Groq API key is correctly set (see setup instructions above)
+- Check that the API key is valid and active
+- Ensure you have remaining API quota
+- If using environment variable, restart your terminal/command prompt after setting it
+
 ### Error Messages
 - **"Missing latitude or longitude columns"**: Data format issue, try different date range
 - **"Error fetching data"**: Network or API issue, check connection and try again
+- **"⚠️ Groq API key not configured"**: Set up your Groq API key following the installation instructions
 
 ## 📚 Dependencies
 
